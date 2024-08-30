@@ -1,0 +1,23 @@
+version: "3.18"
+
+services:
+  mail:
+    env_file: .env
+    build:
+      dockerfile: docker/mail.Dockerfile
+      context: .
+    image: koh/mail
+    container_name: mail
+    networks:
+      - default
+    deploy:
+      resources:
+        limits:
+          cpus: 0.2
+          memory: 200M
+networks:
+  vps-network:
+    external: true
+  default:
+    name: kafka-network
+    external: true
