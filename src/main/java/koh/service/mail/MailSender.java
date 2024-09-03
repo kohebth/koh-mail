@@ -14,15 +14,17 @@ public class MailSender {
 
     String sender;
     Properties authenticationProperties;
+    MailAuthenticator authenticator;
 
     MailSender(String sender, Properties properties) {
         this.sender = sender;
         this.authenticationProperties = properties;
+        this.authenticator = new MailAuthenticator(properties);
     }
 
     public void sendEmail(String toAddress, String subject, String messageText)
             throws Exception {
-        Session session = Session.getInstance(authenticationProperties);
+        Session session = Session.getInstance(authenticationProperties, authenticator);
 
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(this.sender));

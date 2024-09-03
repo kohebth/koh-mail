@@ -5,6 +5,7 @@ import java.util.Properties;
 public class AppConfig {
     public static final String MAIL_SMTP_HOST = System.getenv("MAIL_SMTP_HOST");
     public static final String MAIL_SMTP_PORT = System.getenv("MAIL_SMTP_PORT");
+    public static final String MAIL_SMTP_SSL_ENABLE = System.getenv("MAIL_SMTP_SSL_ENABLE");
     public static final String MAIL_SMTP_SSL_TRUST = System.getenv("MAIL_SMTP_SSL_TRUST");
     public static final String MAIL_SMTP_STARTTLS_ENABLE = System.getenv("MAIL_SMTP_STARTTLS_ENABLE");
     public static final String MAIL_SMTP_AUTH = System.getenv("MAIL_SMTP_AUTH");
@@ -24,7 +25,8 @@ public class AppConfig {
         MAIL_PROPERTIES.setProperty("mail.smtp.user", MAIL_SMTP_USER);
         MAIL_PROPERTIES.setProperty("mail.smtp.password", MAIL_SMTP_PASSWORD);
         MAIL_PROPERTIES.setProperty("mail.smtp.starttls.enable", MAIL_SMTP_STARTTLS_ENABLE);
-        MAIL_PROPERTIES.setProperty("mail.smtp.ssl.trust", MAIL_SMTP_SSL_TRUST);
+//        MAIL_PROPERTIES.setProperty("mail.smtp.ssl.trust", MAIL_SMTP_SSL_TRUST);
+//        MAIL_PROPERTIES.setProperty("mail.smtp.ssl.enable", MAIL_SMTP_SSL_ENABLE);
         MAIL_PROPERTIES.setProperty("mail.smtp.auth", MAIL_SMTP_AUTH);
     }
 

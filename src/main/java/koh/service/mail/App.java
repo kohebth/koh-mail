@@ -29,15 +29,21 @@ public class App {
         this.mailSender = new MailSender(AppConfig.MAIL_SMTP_USER, AppConfig.MAIL_PROPERTIES);
     }
 
-    void start() {
-        consumerWorker.addHandler(TOPIC_MAIL_CONFIRMATION_REQUEST, new ConfirmationMailHandler(producerWorker, mailSender));
-        consumerWorker.addHandler(TOPIC_MAIL_REGISTRATION_REQUEST, new RegistrationMailHandler(producerWorker, mailSender));
-        consumerWorker.addHandler(TOPIC_MAIL_CREDENTIAL_REQUEST, new CredentialMailHandler(producerWorker, mailSender));
-        consumerWorker.exec();
-    }
-
     public static void main(String[] args)
             throws Exception {
-        new App().start();
+      new App().start();
+    }
+
+    void start() {
+        consumerWorker.addHandler(
+                TOPIC_MAIL_CONFIRMATION_REQUEST,
+                new ConfirmationMailHandler(producerWorker, mailSender)
+        );
+        consumerWorker.addHandler(
+                TOPIC_MAIL_REGISTRATION_REQUEST,
+                new RegistrationMailHandler(producerWorker, mailSender)
+        );
+        consumerWorker.addHandler(TOPIC_MAIL_CREDENTIAL_REQUEST, new CredentialMailHandler(producerWorker, mailSender));
+        consumerWorker.exec();
     }
 }
